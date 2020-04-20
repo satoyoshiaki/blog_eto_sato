@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :login_judge, only: [:create, :edit, :update, :destroy, :new, :show ]
 
   # GET /blogs
   # GET /blogs.json
@@ -63,6 +64,7 @@ class BlogsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_blog
       @blog = Blog.find(params[:id])
     end
@@ -71,4 +73,11 @@ class BlogsController < ApplicationController
     def blog_params
       params.require(:blog).permit(:title, :content)
     end
+
+    def login_judge
+      unless logged_in?
+        redirect_to new_session_path
+      end
+    end
+ 
 end
