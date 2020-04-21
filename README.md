@@ -3,4 +3,5 @@
 ## taskテーブル
 
 ### カラム   データ型
-#### name
+#### name   string
+#### description   text
