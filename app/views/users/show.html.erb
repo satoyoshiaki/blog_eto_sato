@@ -16,4 +16,8 @@
 <% end %>
 </table>
 
+<% count = 0 %>
+<% @login_user_blogs.each do |blog| %>  
+    <% count += blog.favorites.count if blog.favorites.present? %>
+    <% end %><p>お気に入りされた合計数: <%= count %></p>
 <%= link_to 'ブログ一覧ページへ', blogs_path %>
