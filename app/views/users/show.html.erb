@@ -1,4 +1,19 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
 
+
+<p>お気に入りページ</p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>内容</th>
+  </tr>
+<% current_user.favorites.each do |favorite| %>
+  <tr>
+    <td><%= favorite.blog.title %></td>
+    <td><%= favorite.blog.content %></td>
+  </tr>
+<% end %>
+</table>
+
 <%= link_to 'ブログ一覧ページへ', blogs_path %>
